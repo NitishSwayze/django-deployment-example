@@ -1,0 +1,27 @@
+{% extends 'AppThree/base.html' %}
+{% block content %}
+<h1>Hi welcome to Django level two!!!</h1>
+<h2>Here are your user records:</h2>
+
+<div class="djangtwo">
+  {% if visitorpage %}
+  <table>
+    <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </thead>
+
+    {% for visitor in visitorpage %}
+    <tr>
+      <td>{{ visitor.first_name }}</td>
+      <td>{{ visitor.last_name }}</td>
+      <td>{{ visitor.email }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+    {% else %}
+    <p>No Visitor Found!!</p>
+    {% endif %}
+  </div>
+{% endblock %}

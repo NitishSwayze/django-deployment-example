@@ -1,0 +1,13 @@
+{% extends 'AppThree/base.html' %}
+{% block content %}
+<h1>Please update visitor information here!</h1>
+<div class="container">
+  <form method="POST">
+
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Enroll!!">
+
+  </form>
+</div>
+{% endblock %}

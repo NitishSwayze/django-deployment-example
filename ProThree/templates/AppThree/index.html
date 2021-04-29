@@ -1,0 +1,11 @@
+{% extends 'AppThree/base.html' %}
+{% block content %}
+<div class="jumbotron">
+
+  <h2>This is the Home page!</h2>
+  <p class="bg-warning">{{ insert_me }}</p>
+
+</div>
+<a class="btn btn-primary btn-lg btn-block" href="{% url 'formpage' %}">Visitors Click Here To Enroll!!</a><br>
+<a class="btn btn-danger btn-lg" href="{% url 'AppThree:register' %}">Sign Up!</a><br><br>
+{% endblock %}

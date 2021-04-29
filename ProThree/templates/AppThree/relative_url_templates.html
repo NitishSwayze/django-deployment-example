@@ -1,0 +1,12 @@
+{% extends 'AppThree/base.html' %}
+{% load my_extras %}
+{% block content %}
+<h1>Welcome to relative URL Template</h1>
+<h1>{{ text|cut:'hello'|upper }}</h1>
+<h1>{{ number|add:'99' }}</h1>
+<a class="btn btn-warning" href="{% url 'AppThree:visitor_page' %}">The visitors list page</a>
+<!-- don't leave any space inside the quotes after url tag, django will consider it -->
+<a class="btn btn-primary" href="{% url 'admin:index' %}">Admin Panel</a>
+<a class="btn btn-success" href="{% url 'formpage' %}">Link to visitors form!</a>
+<a class="btn btn-info" href="{% url 'index' %}">Home Page</a><br>
+{% endblock %}
