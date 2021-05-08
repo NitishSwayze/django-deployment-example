@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Blog{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Medium Style Editor -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css"
+    type="text/css" media="screen" charset="utf-8">
+
+    <!-- custom CSS, always after all the CDNs -->
+    <link rel="stylesheet" href={% static 'css/blog.css' %}/>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="loader navbar navbar-expand-lg navbar-dark bg-dark techfont">
+      <div class="container">
+        <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">Blog Home</a>
+
+        <!-- Add a "hamburger". Remember to add jQuery and JavaScript CDNs -->
+        <!-- at the bottom of the body section for this to work -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+            <a href="https://www.github.com">Github</a>
+            <a href="https://www.Linkedin.com">LinkedIn</a>
+            <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+          </div>
+        </div><!-- /.navbar-collapse -->
+
+
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'post_new' %}">New Post</a>
+          </li>
+          <li>
+            <a href="{% url 'post_draft_list' %}">Drafts</a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+          <li>
+            <a><p class="bg-warning">Welcome: {{ user.username }}</p></a>
+          </li>
+
+          {% else %}
+            <li>
+              <a class='nav navbar-right' href="{% url 'login' %}">
+                <span class='fas fa-user-alt fa-2x'></span>
+              </a>
+            </li>
+          {% endif %}
+
+        </ul>
+
+      </div>
+
+    </nav>
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="blog_posts">
+            {% block content %}
+            replace me
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>
